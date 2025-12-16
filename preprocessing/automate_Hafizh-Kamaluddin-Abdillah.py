@@ -26,6 +26,7 @@ def preprocess(input_file: Path, output_file: Path):
 
     print(f"Preprocessing selesai. File disimpan di:\n{output_file}")
 
+#main function
 if __name__ == '__main__':
     project_root = Path(__file__).resolve().parents[1]
 
