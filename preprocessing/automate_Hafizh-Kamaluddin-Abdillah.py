@@ -11,7 +11,7 @@ def preprocess(input_file: Path, output_file: Path):
     new_df = new_df.drop_duplicates()
 
     le = LabelEncoder()
-    new_df["weather_numeric"] = le.fit_transform(new_df["weather"])
+    new_df["weather"] = le.fit_transform(new_df["weather"])
 
     label_mapping = dict(zip(le.classes_, le.transform(le.classes_)))
     print("Label mapping:", label_mapping)
@@ -19,7 +19,7 @@ def preprocess(input_file: Path, output_file: Path):
     columns_to_scale = ["temp_max", "temp_min", "precipitation", "wind"]
     scaler = RobustScaler()
     new_df[columns_to_scale] = scaler.fit_transform(new_df[columns_to_scale])
-    new_df = new_df.drop(columns=["weather", "date"])
+    new_df = new_df.drop(columns=[ "date"])
 
     output_file.parent.mkdir(parents=True, exist_ok=True)
     new_df.to_csv(output_file, index=False)
