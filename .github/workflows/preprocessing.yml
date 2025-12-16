@@ -25,3 +25,11 @@ jobs:
 
     - name: Run preprocessing
       run: python preprocessing/automate_Hafizh-Kamaluddin-Abdillah.py
+
+    - name: Commit and push changes
+      uses: EndBug/add-and-commit@v9
+      with:
+        author_name: GitHub Actions
+        author_email: actions@github.com
+        message: 'Update preprocessed data [skip ci]'
+        add: 'preprocessing/seattle-weather_preprocessing.csv'
